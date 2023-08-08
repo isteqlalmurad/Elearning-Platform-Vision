@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>rulde little AI</h2>
+
+  
+
+<input type="text" id="message" name="message">
+<button onclick="sendMessage()" class="glittery-button">Send</button>
+
+<p id="response"> THE GPT</p>
+<br>
+<br>
+
+<p id="test"> THE POST</p>
+
+<script>
+function sendMessage() {
+  var message = document.getElementById("message").value;
+  fetch('/api/gpt_chat/?message=' + message)
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);  // Log the response data
+    document.getElementById("response").innerText = data.response;
+  });
+}
+
+</script>
+<!--////////our new passing dive content function------------------->
+<input type="text" id="post" name="post">
+<br>
+<button onclick="showContent()">Submit</button>
+
+<script>
+
+function showContent(submit) {
+  var submit = document.getElementById("post").value;
+    fetch('test/?submit=' + encodeURIComponent(submit))
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);  // Log the response data
+        document.getElementById("test").innerText = data.response;
+    });
+}
+
+
+
+</script>
+
+</body>
+</html>
