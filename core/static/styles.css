@@ -1,223 +1,29 @@
-/* body {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    word-wrap: break-word; 
-    overflow-wrap: break-word;
-}
-
-
-#sidebar {
-    background-color: #4FB06D;
-    padding: 15px;
-    width: 200px;
-    height: 100vh;
-    box-sizing: border-box;
-    color: ghostwhite;
-    font-family: Arial, sans-serif; 
-}
-
-#sidebar ul {
-    list-style-type: none;
-    padding: 0;
-    
-}
-
-#sidebar ul li {
-    background-color: ghostwhite;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    
-}
-
-#sidebar ul li a {
-
-    color: #000;
-    text-decoration: none;
-    display: block;
-    padding: 10px;
-    transition: background-color 0.3s ease;
-}
-
-#sidebar ul li a:hover {
-    background-color: #83c4a5;
-    color: white;
-}
-
-#sidebar ul li a:active {
-    background-color: #2e8054;
-    color: white;
-}
-
-#sidebar ul li a.selected {
-    background-color: #83c4a5; 
-    color: white;
-}
-
-#parent-container {
-    display: flex;
-    flex-direction: row;
-}
-
-#post-content {
-    position: absolute;
-    padding: 15px;
-    box-sizing: border-box;
-    overflow-y: auto;
-    width: calc(100% - 340px - 15px);
-}
-
-#gpt-display {
-    position: relative; 
-    background-color: #253342;
-    padding: 2%;
-    width: 340px;
-    height: 100vh;
-    box-sizing: border-box;
-    position: fixed;
-    right: 0;
-    color: white;
-    overflow-y:auto;
-}
-
-#botFace {
-    position: absolute;
-    top: 0; 
-    right: 42%; 
-    background-color: #42afff;
-    font-size: 13px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    border: 1px solid black;
-    padding: 10px;
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    animation: rainbow 3s infinite;
-}
-
-
-#Conv-Container {
-    position: absolute;
-    top: 70px; 
-    right: 0;
-    bottom: 70px; 
-    width: 100%;
-    overflow-y: auto;
-    padding: 4%;
-    box-sizing: border-box;
-
-    
-}
-
-
-.user-message {
-    background-color: #004d80;
-    color: #b3d9ff;
-    margin: 10px;
-    padding: 15px;
-    border-radius: 15px;
-    border: 1px solid #b3d9ff;
-    font-family: 'Arial', sans-serif;
-    line-height: 1.5;
-}
-
-.ai-message {
-    background-color: #0066cc;
-    color: #e6f0ff;
-    margin: 10px;
-    padding: 15px;
-    border-radius: 15px;
-    border: 1px solid #e6f0ff;
-    font-family: 'Arial', sans-serif;
-    line-height: 1.5;
-}
-
-#message-box {
-    position: absolute;
-    right: 12px;
-    bottom: 5px;
-    width: 300px;
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 25px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-}
-
-#message-input {
-    flex-grow: 1;
-    border: none;
-    outline: none;
-    padding: 10px;
-    border-radius: 20px;
-    font-size: 16px;
-    width: calc(100% - 50px);
-    box-sizing: border-box;
-}
-
-#send-button {
-    position: absolute;
-    right: 10px;
-    bottom: 14px;
-    width: 30px;
-    height: 30px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 20px;
-    line-height: 30px;
-    text-align: center;
-}
-
-#send-button:hover {
-    background-color: #0056b3;
-}
-
-@keyframes rainbow {
-    0% {box-shadow: 0 0 5px #ff0000;}
-    14% {box-shadow: 0 0 5px #ff7f00;}
-    28% {box-shadow: 0 0 5px #ffff00;}
-    42% {box-shadow: 0 0 5px #00ff00;}
-    57% {box-shadow: 0 0 5px #0000ff;}
-    71% {box-shadow: 0 0 5px #4b0082;}
-    85% {box-shadow: 0 0 5px #8f00ff;}
-    100% {box-shadow: 0 0 5px #ff0000;}
-} */
-
-
-body {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    font-size: 1.1vw;
- 
-    font-family: Roboto, Arial, sans-serif;
-    word-wrap: break-word; 
-    overflow-wrap: break-word;
-}
-
 #wholePage {
-    display: flex;
-    width: 100%;
-    height: 100vh;
+
+    margin: 0;
+    padding: 0;
+    /* font-size: 1.1vw; */
+    /* font-family: Roboto, Arial, sans-serif; */
+    font-family: 'Open Sans', sans-serif;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
+
 #sidebar {
-    background-color: #4FB06D;
-    padding: 15px;
-    width: 15%;
-    height: 100vh;
-    box-sizing: border-box;
+    background-color: #FF6A88;
     color: ghostwhite;
-    font-family: Arial, sans-serif;
-    position: fixed;
+    overflow-y: auto;
+    height: 100vh;
+    border-radius: 5px;
+    border-color: #ffffff;
+    border-width: 1px;
+    /* Setting border thickness */
+    border-style: solid;
+    padding: 2%;
+    box-sizing: border-box;
+    width: 100%;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1);
 }
 
 #sidebar ul {
@@ -240,67 +46,50 @@ body {
 }
 
 #sidebar ul li a:hover {
-    background-color: #83c4a5;
-    color: white;
-}
-
-#sidebar ul li a:active {
-    background-color: #2e8054;
-    color: white;
-}
-
-#sidebar ul li a.selected {
-    background-color: #83c4a5;
+    background-color: #002244;
     color: white;
 }
 
 #post-content {
-    background-color: #F1EDE3;
-    position: fixed;
-    padding: 15px;
-    box-sizing: border-box;
+    background: #ffffff;
     overflow-y: auto;
-    width: 50%;
-    left: 15%;
     height: 100vh;
     white-space: pre-wrap;
 }
 
-#gpt-display {
-    position: fixed; 
-    background-color: #253342;
-    padding: 2%;
-    width: 35%;
-    height: 100vh;
-    box-sizing: border-box;
-    right: 0;
-    color: white;
-    overflow-y:auto;
-}
 
-#botFace {
-    position: absolute;
-    top: 0;
-    right: 42%;
-    background-color: #42afff;
-    font-size: 13px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    border: 1px solid black;
-    padding: 10px;
-    display: inline-block;
-    width: 47px;
-    height: 47px;
-    border-radius: 50%;
-    animation: rainbow 3s infinite;
+#gpt-display {
+    padding: 2%;
+    box-sizing: border-box;
+    position: fixed;
+    overflow: auto;
+    right: 1%;
+    height: 85vh;
+    bottom: 5px;
+    width: 100%;
+    max-width: 485px;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 15px;
+    border-color: #fda1b4;
+    border-width: 2px;
+    /* Setting border thickness */
+    border-style: solid;
+    /* Necessary to display the border */
+
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1);
+
+    /* Added transition for transform property for smoother animation */
+    transition: transform 0.3s ease-out;
+    /* Initial state - panel is fully shown */
+    transform: translateX(0);
+
 }
 
 #Conv-Container {
     position: absolute;
-    top: 70px;
+    font-size: 16px;
+    top: 5px;
     right: 0;
     bottom: 70px;
     width: 100%;
@@ -334,15 +123,19 @@ body {
 #message-box {
     position: absolute;
     /* right: 12px; */
-    bottom: 5px;
-    width: 30vw;
+    bottom: 10px;
+    width: 87%;
     background-color: #fff;
     padding: 10px;
-    border-radius: 25px;
+    border-radius: 15px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+
+    animation: rainbow 3s infinite;
+    transition: background-color 0.2s ease;
+    /* For hover effect */
 }
 
-#message-input {
+.message-input {
     flex-grow: 1;
     border: none;
     outline: none;
@@ -374,23 +167,176 @@ body {
 }
 
 @keyframes rainbow {
-    0% {box-shadow: 0 0 5px #ff0000;}
-    14% {box-shadow: 0 0 5px #ff7f00;}
-    28% {box-shadow: 0 0 5px #ffff00;}
-    42% {box-shadow: 0 0 5px #00ff00;}
-    57% {box-shadow: 0 0 5px #0000ff;}
-    71% {box-shadow: 0 0 5px #4b0082;}
-    85% {box-shadow: 0 0 5px #8f00ff;}
-    100% {box-shadow: 0 0 5px #ff0000;}
+    0% {
+        box-shadow: 0 0 5px #ff0000;
+    }
+
+    14% {
+        box-shadow: 0 0 5px #ff7f00;
+    }
+
+    28% {
+        box-shadow: 0 0 5px #ffff00;
+    }
+
+    42% {
+        box-shadow: 0 0 5px #00ff00;
+    }
+
+    57% {
+        box-shadow: 0 0 5px #0000ff;
+    }
+
+    71% {
+        box-shadow: 0 0 5px #4b0082;
+    }
+
+    85% {
+        box-shadow: 0 0 5px #8f00ff;
+    }
+
+    100% {
+        box-shadow: 0 0 5px #ff0000;
+    }
 }
 
 
-/* fix this code, it is creating another block inide the post-content div */
+.profile-pic-container {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #FF6A88;
+    margin-left: 15px;
+    position: relative;
+
+    /* Add this line */
+}
+
+.profile-pic {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#botFace {
+    position: absolute;
+    top: 5px;
+    color: whitesmoke;
+    right: 50%;
+    background-color: #42afff;
+    font-size: 9px;
+    /* font-weight: bold; */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    border: 1px solid black;
+    padding: 10px;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    animation: rainbow 3s infinite;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    /* For hover effect */
+}
+
+#botFace:hover {
+    background-color: #d9e4ef;
+    /* Slightly lighter shade for hover */
+}
+
+/* pre is used becuase it load the data as it is with out rendering the formating it is the only trick I could come up with that would save me the farsi formattig scheme */
+
 pre {
-   
-    font-family: Roboto, Arial, sans-serif;
-    padding: 2px;
-    font-size: 10px;
-    color: #333;
-    /* overflow-x: auto; If the content is too wide to fit, provide a horizontal scrollbar */
-}   
+    white-space: pre-wrap;
+
+    word-wrap: break-word;
+
+}
+
+
+/* Th excerise section and modal view for next lesson window and stuff */
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 50%;
+    /* Full width */
+    height: 50%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 100%;
+    /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: rgba(0, 0, 0, 0.297);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
+/* Custom btns */
+
+.custom-btn {
+    background-color: #FF3D70;
+    color: rgb(255, 255, 255);
+
+    padding: 10px 25px;
+    border: none;
+    border-radius: 20px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+
+}
+
+.custom-btn:hover {
+    background-color: #ff3c7097;
+    color: white;
+}
+
+
+.custom-btn-container {
+    display: flex;
+    gap: 20px;
+}

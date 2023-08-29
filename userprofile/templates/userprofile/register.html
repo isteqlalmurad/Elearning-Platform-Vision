@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Register</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Pacifico&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(45deg, #FF9A8D, #FF6A88, #FF3D70);
+            height: 100vh;
+            margin: 0;
+            background-size: 600% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+
+        .user_card {
+            width: 100%;
+            max-width: 600px;
+
+            /* max-height: 600px; */
+            margin: auto;
+            background-color: #fff;
+            padding: 20px 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 58, 93, 0.2),
+                /* Muted teal shadow */
+                0 6px 20px rgba(0, 58, 93, 0.15);
+            /* Deeper effect */
+            transition: all 0.3s ease;
+        }
+
+        .user_card:hover {
+            box-shadow: 0 6px 12px rgba(0, 58, 93, 0.25),
+                /* Intensified shadow */
+                0 8px 24px rgba(0, 58, 93, 0.2);
+            /* Deeper effect */
+            transform: translateY(-5px);
+            /* More pronounced lift for a floating effect */
+        }
+
+        #form-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 2em;
+            color: #FF3D70;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login_btn {
+            background: #FF3D70;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .login_btn:hover,
+        .login_btn:focus {
+            background-color: #FF6A88;
+            box-shadow: none;
+            outline: none;
+        }
+
+        .input-group-text {
+            background: #FF6A88;
+            color: white;
+            border: none;
+            border-radius: 0.25rem 0 0 0.25rem;
+
+        }
+
+        .input-group {
+            border: none;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+
+        }
+
+        .form-control {
+            border-left: none;
+            box-shadow: none;
+            border-color: #FF3D70;
+            transition: border-color 0.2s;
+        }
+
+
+        a {
+            color: #FF3D70;
+            text-decoration: underline;
+
+        }
+
+        p {
+            margin: 15px 0;
+            color: #555;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="user_card">
+            <h3 id="form-title">REGISTER ACCOUNT</h3>
+            <div class="form_container">
+
+                <form method="POST" action="" enctype="multipart/form-data">
+
+
+                    {% csrf_token %}
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+
+                        {{form.username}}
+
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
+                        </div>
+                        {{form.email}}
+
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        {{form.password1}}
+
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+
+                        {{form.password2}}
+
+                    </div>
+
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        {{form.first_name}}
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        {{form.last_name}}
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                        </div>
+                        {{form.dob}}
+                    </div>
+                    <p>Your likes and hobbies ..</p>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-heart"></i></span>
+                        </div>
+                        {{form.likes}}
+                    </div>
+
+                    <p>upload a profile picture</p>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-image"></i></span>
+                        </div>
+                        {{form.image}}
+                    </div>
+                    <div class="d-flex justify-content-center mt-3">
+                        <input class="btn login_btn" type="submit" value="Register Account">
+                    </div>
+                </form>
+                {{ form.errors }}
+
+                <div class="mt-4 text-center">
+                    Already have an account? <a href="{% url 'login' %}">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var form_fields = document.getElementsByTagName('input')
+        form_fields[1].placeholder = 'Username..';
+        form_fields[2].placeholder = 'Email..';
+        form_fields[3].placeholder = 'Enter password...';
+        form_fields[4].placeholder = 'Re-enter Password...';
+
+
+        form_fields[5].placeholder = 'First Name..';
+        form_fields[6].placeholder = 'Last Name..';
+        form_fields[7].placeholder = 'Date of Birth..';
+        form_fields[8].placeholder = 'Likes..';
+        form_fields[9].placeholder = 'Upload Image..';
+
+
+
+        for (var field in form_fields) {
+            form_fields[field].className += ' form-control'
+        }
+
+    </script>
+</body>
+
+</html>

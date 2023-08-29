@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;700&display=swap');
+
+
+
+.content-container {
+    height: 120vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+
+.vision-info {
+    color: rgb(255, 255, 255);
+
+    padding: 20px;
+    font-size: large;
+    margin: 7%;
+    animation: glowingEffect 3s infinite alternate;
+    border-radius: 15px;
+
+}
+
+@keyframes glowingEffect {
+    0% {
+        box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ffffff, 0 0 20px #ffffff;
+    }
+
+    100% {
+        box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 25px #FF3D70, 0 0 30px #c9d8e2;
+    }
+}
+
+
+
+
+@keyframes cometTrail {
+    0% {
+        transform: rotate(30deg) translateY(-30%) rotate(30deg);
+    }
+
+    100% {
+        transform: rotate(30deg) translateY(-20%) rotate(30deg);
+    }
+}
+
+
+.welcome-container {
+
+    height: 100vh;
+}
+
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(45deg, #FF9A8D, #FF6A88, hwb(344 24% 0% / 0.746));
+    height: 100vh;
+    margin: 0;
+    background-size: 600% 400%;
+    animation: gradient 15s ease infinite;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+
+}
+
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3.5em;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-btn {
+    background-color: white;
+    color: #333;
+
+    padding: 10px 25px;
+    border: none;
+    border-radius: 20px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+
+}
+
+.custom-btn:hover {
+    background-color: #FF3D70;
+    color: white;
+}
+
+
+.custom-btn-container {
+    display: flex;
+    gap: 20px;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}

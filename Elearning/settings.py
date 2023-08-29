@@ -26,13 +26,17 @@ SECRET_KEY = 'django-insecure-^lj-0&z5b03_j-_!g6&gl-aso6u-gn1=7f^xtycx_3pd@anw*q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
 
-OPENAI_API_KEY = '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'
+    'dead-134-36-250-24.ngrok-free.app'
+]
+
+OPENAI_API_KEY = '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'
 
 # Application definition
 
 INSTALLED_APPS = [
+    # Django specific apps
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,22 +44,56 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # # for google loging Oauth social login apps
+
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.google',
+
+    # my project specific apps
     'blog',
     'core',
     'chatgpt',
-    'testing'
-    
+    'testing',
+    'userprofile',
+    'corsheaders',
+    'progress_analytics',
 ]
+
+
+# AUTHENTICATION_BACKENDS = (
+
+#     'allauth.account.authentication.AllauthBackend',
+
+# )
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+]
+
+
+# problems with trusted origins and CSRF erros I will be coming here again as I think about it.
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
+    "https://31d0-134-36-250-24.ngrok-free.app",
+    # other trusted origins can be added here
+]
+CSRF_TRUSTED_ORIGINS = [
+    "https://31d0-134-36-250-24.ngrok-free.app",
 ]
 
 ROOT_URLCONF = 'Elearning.urls'
@@ -84,7 +122,7 @@ WSGI_APPLICATION = 'Elearning.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 # DATABASES = {
-    
+
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
 #         'NAME': BASE_DIR / 'db.sqlite3',
@@ -99,7 +137,7 @@ DATABASES = {
         'PASSWORD': 'King@12345',
         'HOST': '127.0.0.1',    # Usually 'localhost' or '127.0.0.1'
         'PORT': '3306',    # Usually '3306'
-        
+
         'OPTIONS': {
             'charset': 'utf8mb4',
         },
@@ -129,6 +167,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'core/static',
+    BASE_DIR / 'userprofile/static',
 ]
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -151,7 +190,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-ALLOWED_HOSTS = 'b1d3-134-36-250-24.ngrok-free.app', 'localhost', '127.0.0.1', '2c2e-134-36-250-24.ngrok-free.app'
+ALLOWED_HOSTS = 'b1d3-134-36-250-24.ngrok-free.app', 'localhost', '127.0.0.1', '2c2e-134-36-250-24.ngrok-free.app', 'dead-134-36-250-24.ngrok-free.app', '4999-134-36-250-24.ngrok-free.app', '31d0-134-36-250-24.ngrok-free.app'
 
 # settings.py
 
@@ -168,3 +207,5 @@ LOGGING = {
         'level': 'DEBUG',
     },
 }
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'

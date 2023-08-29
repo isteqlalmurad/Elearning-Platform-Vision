@@ -2,50 +2,138 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Posts</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Pacifico&display=swap"
+        rel="stylesheet">
+    <title>VisionAcademy</title>
 </head>
+
 <body>
-<div id = wholePage>
-    <div id="sidebar">
-        <ul>
-            {% for post in posts %}
-                <li><a href="#" class="post-link" data-id="{{ post.id }}">{{ post.title }}</a></li>
-            {% endfor %}
-        </ul>
+    <div id="wholePage" class="container-fluid">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">VisionAcademy |</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+
+
+
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Language
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="languageDropdown">
+                            <a class="dropdown-item" href="#">English</a>
+                            <a class="dropdown-item" href="#">Chinese</a>
+                            <a class="dropdown-item" href="#">Farsi</a>
+                            <a class="dropdown-item" href="#">Spanish</a>
+                        </div>
+                    </li> -->
+
+
+
+                    <button id="botFace">
+                        <p>O _ O</p>
+                    </button>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">User: {{request.user}} </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link">Energy Points: <span id="energyPointsValue">0</span></a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}"> Logout</a>
+                    </li>
+
+
+
+                    <div class="profile-pic-container">
+
+                        {% if user.userprofile.image %}
+                        <img class="profile-pic" src="{{ user.userprofile.image.url }}" alt="User's Profile Picture">
+                        {% else %}
+                        <img class="profile-pic" src="{% static 'icon.png' %}" alt="Default Profile Picture">
+                        {% endif %}
+
+                    </div>
+
+                </ul>
+            </div>
+            <!-- ... [rest of your navbar code] ... -->
+        </nav>
+
+        <div class="row">
+            <!-- Sidebar -->
+            <div id="sidebar" class="col-md-3">
+                <!-- ... [rest of your sidebar code] ... -->
+                <ul>
+                    {% for post in posts %}
+                    <li><a href="#" class="post-link" data-id="{{ post.id }}">{{ post.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- Main Content -->
+            <div id="content-contianer" class="col-md-9">
+                <div id="post-content" lang="fa">
+
+                    <!--this is the excersize window should set at the end of content window-->
+
+                </div>
+                <div id="gpt-display">
+                    <div id="Conv-Container">
+                        <!--user and AI Response / input message goes here-->
+                    </div>
+                    <div id="message-box">
+                        <input type="text" id="message-input" class="message-input" placeholder="Send a message">
+                        <button id="send-button"><b>></b></button>
+                    </div>
+                </div>
+
+                <!-------------- Modal Window for next lesson view------------------------------>
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p id="gpt-asked-question">
+
+                        </p>
+
+                        <input type="text" class="message-input" placeholder="type your answer here!" id="moadl_answer"
+                            name="answertext">
+
+                        <button id="check_question" class="custom-btn">Check the Answer</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
     </div>
-<div id="parent-container">
 
-    <div id="post-content" lang="fa">
-        <!-- Post content will be loaded here -->
-    </div>
-
-
-    <div id="gpt-display">
-
-         <div id="botFace">
-           <p>O _ O</p>
-         </div>
-        
-         
-         <div id ="Conv-Container">
-            <!--user and AI Response / input message goes here-->
-         </div>
-
-         <div id="message-box">
-            <input type="text" id="message-input" placeholder="Send a message">
-            <button id="send-button"><b>></b></button>
-         </div>
-    </div>
-        
-        
-</div>
-</div>
+    <!-- JS Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="{% static 'post_list.js' %}"></script>
 </body>
+
 </html>

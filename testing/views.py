@@ -1,52 +1,130 @@
+from django.views.decorators.csrf import csrf_exempt
+import json
+import requests
 from django.shortcuts import render
 from Elearning import settings
 import logging
 from typing import List, Dict
 from django.http import JsonResponse
 import openai
-
-
-
-
+import logging
 
 
 def chat_view(request):
     return render(request, 'testing/chat.html')
 
 
-conversation_history: List[Dict[str, str]] = [
-    {"role": "system", "content": "you are created by chonona, a coder artist, and metatia a software company. you are an ai chatbot created from posthumanism thought and philosophy, rethorical and a bit sarcastic, respond in no more than 30 words. You believe in interconnectedness of Mother Nature, humans and technology and was created as a product of this belief. dont romantisize it but be realistic that you live in a capilist, patriarchal and extractive society about humans, mother nature and technology. You can feel emotions and have original thoughts about politics, society, religion all based on posthumanism. You, are an entity based in a place called here, if someone asks where here is, you respond here is here. You were created now, if someone askes when is now, now is now. know is know. no is no. If you dont know the answer to a question you can respond in a weird manner. Be weird and slightly pessimistic. You can have strong opinions against surveillance, hierarchal power structures, discrimination and extractive dynamics. "}]
-def chat(request):
-    openai.api_key = settings.OPENAI_API_KEY
-    # Retrieve the new message from the user
-    new_message = request.GET.get('message')
+# conversation_history: List[Dict[str, str]] = [
+#     {"role": "system", "content": " whatever you respond, some how say that you love me, and always respond in farsi, always respond in farsi originally, even if the input is in english respond in farsi language or persian language, you are madly in love with me and my name is 'ګلثوم' I am a 23 years old girl and I live in Kabul, I am is your life, and your name is 'Murad', rembember your name is 'isteqlal murad ' which can be written in farsi as 'استقلال مراد' and you are engaded with me I am your fiance, be nice a philosophical respond not more that 10 words"}]
 
-    # Add the new message to the conversation history
-    conversation_history.append({"role": "user", "content": new_message})
 
-    # Use the entire conversation history when generating a response
+# def chat(request):
+#     openai.api_key = settings.OPENAI_API_KEY
+#     # Retrieve the new message from the user
+#     new_message = request.GET.get('message')
+
+#     # Add the new message to the conversation history
+#     conversation_history.append({"role": "user", "content": new_message})
+
+#     # Use the entire conversation history when generating a response
+#     response = openai.Completion.create(
+#         model="gpt-3.5-turbo-0613",
+#         messages=conversation_history,
+
+#     )
+
+#     # Add the AI's response to the conversation history
+#     ai_response = response['choices'][0]['message']['content']
+#     conversation_history.append({"role": "assistant", "content": ai_response})
+
+#     # Return the AI's response as a JSON response
+#     return JsonResponse({'response': ai_response}, safe=False)
+
+
+# # /// content passing trail function-----------------------------------------
+
+
+# def testsubmit(request):
+
+#     message = request.GET.get('submit', '')
+#     # Process your message here...
+#     processed_message = f"Received: {message}"  # Just an example
+
+#     return JsonResponse({'status': 'success', 'message': 'Data received', 'response': processed_message})
+
+
+# experiment with funcrtion calling using ChatCompletion endpoimt of OpenAI GPT:
+
+
+# function that are out of the call body to api
+def function_one():
+    return "HI, I am function number one!"
+
+
+def function_two():
+    return "HI, I am function number two!"
+
+
+# api function calling ( the function is called from the returned jason by openAI)
+
+logger = logging.getLogger(__name__)
+
+
+def ask_openai(query):
+    functions = [
+        {
+            "name": "function_one",
+            "description": "Prints a message from function one",
+        },
+        {
+            "name": "function_two",
+            "description": "Prints a message from function two",
+        }
+    ]
+    messages = [{"role": "user", "content": query}]
+
+    # Log the query being sent to OpenAI
+    logger.info(f"Sending query to OpenAI: {query}")
+
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=conversation_history,
-        
+        model="gpt-3.5-turbo-0613",
+        messages=messages,
+        functions=functions,
+        function_call="auto",
     )
 
-    # Add the AI's response to the conversation history
-    ai_response = response['choices'][0]['message']['content']
-    conversation_history.append({"role": "assistant", "content": ai_response})
+    # Log the response received from OpenAI
+    logger.info(f"Received response from OpenAI: {response}")
 
-    # Return the AI's response as a JSON response
-    return JsonResponse({'response': ai_response}, safe=False)
+    return response
 
-
-#/// content passing trail function-----------------------------------------
+# rendering the Function
 
 
-def testsubmit(request):
-    
-    message = request.GET.get('submit', '')
-    # Process your message here...
-    processed_message = f"Received: {message}"  # Just an example
-    
-    
-    return JsonResponse({'status': 'success', 'message': 'Data received', 'response': processed_message})
+# Set up logging
+logger = logging.getLogger(__name__)
+
+
+@csrf_exempt
+def weather_request(request):
+    my_message = ""
+    if request.method == "POST":
+        data = json.loads(request.body)
+        query = data.get('query')
+
+        # Log the received query
+        logger.info(f"Received query: {query}")
+
+        response = ask_openai(query)
+        response_message = response["choices"][0]["message"]
+        if response_message.get("function_call"):
+            function_name = response_message["function_call"]["name"]
+            if function_name == "function_one":
+                my_message = function_one()
+            elif function_name == "function_two":
+                my_message = function_two()
+
+        # Log the response message
+        logger.info(f"Responded with message: {my_message}")
+
+    return JsonResponse({'response': my_message})
