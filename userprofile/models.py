@@ -12,8 +12,6 @@ class UserProfile(models.Model):
         return self.user.username
 
 
-# this is the intial model for keeping progress it will certinly be changed later on now just leaving it for fun
-
 class Progress(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     lesson_completed = models.IntegerField(default=0)

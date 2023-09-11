@@ -26,31 +26,8 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
 
-
-
-                    <!-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Language
-                        </a>
-
-                        <div class="dropdown-menu" aria-labelledby="languageDropdown">
-                            <a class="dropdown-item" href="#">English</a>
-                            <a class="dropdown-item" href="#">Chinese</a>
-                            <a class="dropdown-item" href="#">Farsi</a>
-                            <a class="dropdown-item" href="#">Spanish</a>
-                        </div>
-                    </li> -->
-
-
-
-                    <button id="botFace">
-                        <p>O _ O</p>
-                    </button>
-
-
                     <li class="nav-item">
-                        <a class="nav-link" href="#">User: {{request.user}} </a>
+                        <a class="nav-link" href="{% url 'profile_view_and_report' %}">User: {{request.user}} </a>
                     </li>
 
                     <li class="nav-item">
@@ -76,24 +53,25 @@
 
                 </ul>
             </div>
-            <!-- ... [rest of your navbar code] ... -->
+
         </nav>
 
         <div class="row">
             <!-- Sidebar -->
             <div id="sidebar" class="col-md-3">
-                <!-- ... [rest of your sidebar code] ... -->
+
                 <ul>
                     {% for post in posts %}
                     <li><a href="#" class="post-link" data-id="{{ post.id }}">{{ post.title }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
+
             <!-- Main Content -->
             <div id="content-contianer" class="col-md-9">
                 <div id="post-content" lang="fa">
 
-                    <!--this is the excersize window should set at the end of content window-->
+                    <!--this is the excersize window will be placed dinamically  at the end of the lesson content window-->
 
                 </div>
                 <div id="gpt-display">
@@ -118,15 +96,20 @@
                             name="answertext">
 
                         <button id="check_question" class="custom-btn">Check the Answer</button>
+                        <button id="move_next" class="custom-btn">Great! click to move to next lesson</button>
                     </div>
                 </div>
             </div>
 
-
         </div>
 
-
     </div>
+
+    <button id="botFace">
+        <p class="blinking-effect">O O</p>
+
+    </button>
+
 
     <!-- JS Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

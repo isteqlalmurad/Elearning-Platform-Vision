@@ -31,7 +31,7 @@ ALLOWED_HOSTS = [
     'dead-134-36-250-24.ngrok-free.app'
 ]
 
-OPENAI_API_KEY = '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'
+OPENAI_API_KEY = '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'
 
 # Application definition
 
@@ -68,6 +68,7 @@ INSTALLED_APPS = [
 #     'allauth.account.authentication.AllauthBackend',
 
 # )
+LOGIN_URL = 'login'
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
@@ -83,18 +84,24 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'userprofile.middleware.ActiveUserMiddleware',
 ]
 
 
 # problems with trusted origins and CSRF erros I will be coming here again as I think about it.
 CORS_ALLOW_ALL_ORIGINS = False
+
 CORS_ALLOWED_ORIGINS = [
-    "https://31d0-134-36-250-24.ngrok-free.app",
+    "https://5212-2a00-23ee-1798-148d-853b-3832-5ff5-6062.ngrok-free.app",
     # other trusted origins can be added here
 ]
 CSRF_TRUSTED_ORIGINS = [
-    "https://31d0-134-36-250-24.ngrok-free.app",
-]
+    'https://5401-2a00-23ee-17b8-54b-391c-25d7-e127-c5fc.ngrok-free.app']
+
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1',
+                 '5401-2a00-23ee-17b8-54b-391c-25d7-e127-c5fc.ngrok-free.app']
+
 
 ROOT_URLCONF = 'Elearning.urls'
 
@@ -113,6 +120,14 @@ TEMPLATES = [
         },
     },
 ]
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    }
+}
 
 
 WSGI_APPLICATION = 'Elearning.wsgi.application'
@@ -190,7 +205,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-ALLOWED_HOSTS = 'b1d3-134-36-250-24.ngrok-free.app', 'localhost', '127.0.0.1', '2c2e-134-36-250-24.ngrok-free.app', 'dead-134-36-250-24.ngrok-free.app', '4999-134-36-250-24.ngrok-free.app', '31d0-134-36-250-24.ngrok-free.app'
+
 
 # settings.py
 

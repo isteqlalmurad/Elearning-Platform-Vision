@@ -1,12 +1,18 @@
 
 # Create your views here.
 # views.py
+from django.contrib import admin
+from django.utils import timezone
+from django.contrib.sessions.models import Session
+from django.contrib.auth.models import User
+from django.core.cache import cache
 import logging
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from userprofile.models import UserProfile
 from .forms import CustomUserCreationForm
 from django.contrib import messages
+
 
 from django.shortcuts import render
 
@@ -37,7 +43,6 @@ logger = logging.getLogger(__name__)
 
 
 def user_login(request):
-    # user = None  # Initialization to prevent UnboundLocalError
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -45,7 +50,10 @@ def user_login(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                logger.info(f"User {user.username} logged in successfully.")
+                # Log the count of currently logged-in users
+
+                logger.info(
+                    f"User {user.username} logged in successfully. Total online users: {count_online_users()}.")
                 return redirect('home')
             else:
                 messages.error(request, 'Account is disabled.')
@@ -60,6 +68,19 @@ def user_login(request):
 def user_logout(request):
     # Logging the logout
     logger.info(f"User {request.user.username} logged out.")
+
+    # clearing the conversation session from vision-bot after user logs_out
+    request.session['conversation_history'] = []
+    # delete the online status tracker from the chatche key
+    # cache.delete(f'online_user_{request.user.pk}')
     logout(request)
     # messages.success(request, 'Logged out successfully.') might use it later for notification
     return redirect('landing')
+
+
+def count_online_users():
+    online_users = 0
+    for user in User.objects.all():
+        if cache.get(f'online_user_{user.pk}'):
+            online_users += 1
+    return online_users

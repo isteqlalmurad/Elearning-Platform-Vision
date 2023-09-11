@@ -1,146 +1,110 @@
-<!DOCTYPE html>
-<html lang="en">
+<style>
+  #botFace {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 9999;
+  }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fireworks Animation with Particles.js</title>
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: black;
+  @keyframes blink {
+
+    0%,
+    20%,
+    100% {
+      opacity: 1;
     }
 
-    #particles-js {
-      position: absolute;
-      width: 100%;
-      height: 100%;
+    10% {
+      opacity: 0;
+    }
+  }
+
+  #botFace p::before,
+  #botFace p::after {
+    content: "O";
+    animation: blink 1s infinite;
+  }
+
+  #botFace:hover p {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+
+  #botFace {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 9999;
+  }
+
+  @keyframes blink {
+
+    0%,
+    20%,
+    100% {
+      opacity: 1;
     }
 
-    button {
-      z-index: 10;
-      padding: 10px 20px;
-      font-size: 1.5rem;
-      cursor: pointer;
+    10% {
+      opacity: 0;
     }
-  </style>
-</head>
+  }
 
-<body>
-  <div id="particles-js"></div>
-  <button onclick="launchFireworks()">Congratulations! Unlock Next Lesson</button>
+  #botFace p::before,
+  #botFace p::after {
+    content: "O";
+    animation: blink 1s infinite;
+  }
 
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script>
-    function launchFireworks() {
-      particlesJS('particles-js', {
-        "particles": {
-          "number": {
-            "value": 200,
-            "density": {
-              "enable": true,
-              "value_area": 800
-            }
-          },
-          "color": {
-            "value": ["#FF1461", "#18FF92", "#5A87FF", "#FBF38C"]
-          },
-          "shape": {
-            "type": "circle",
-            "stroke": {
-              "width": 0,
-              "color": "#000000"
-            },
-            "polygon": {
-              "nb_sides": 5
-            },
-          },
-          "opacity": {
-            "value": 0.9,
-            "random": true,
-            "anim": {
-              "enable": true,
-              "speed": 1,
-              "opacity_min": 0.1,
-              "sync": false
-            }
-          },
-          "size": {
-            "value": 8,
-            "random": true,
-            "anim": {
-              "enable": false,
-              "speed": 40,
-              "size_min": 0.1,
-              "sync": false
-            }
-          },
-          "line_linked": {
-            "enable": false,
-          },
-          "move": {
-            "enable": true,
-            "speed": 14,
-            "direction": "none",
-            "random": true,
-            "straight": false,
-            "out_mode": "out",
-            "bounce": false,
-            "attract": {
-              "enable": false,
-              "rotateX": 600,
-              "rotateY": 1200
-            }
-          }
-        },
-        "interactivity": {
-          "detect_on": "canvas",
-          "events": {
-            "onhover": {
-              "enable": true,
-              "mode": "bubble"
-            },
-            "onclick": {
-              "enable": true,
-              "mode": "repulse"
-            },
-            "resize": true
-          },
-          "modes": {
-            "grab": {
-              "distance": 400,
-              "line_linked": {
-                "opacity": 1
-              }
-            },
-            "bubble": {
-              "distance": 400,
-              "size": 40,
-              "duration": 2,
-              "opacity": 8,
-              "speed": 3
-            },
-            "repulse": {
-              "distance": 200,
-              "duration": 0.4
-            },
-            "push": {
-              "particles_nb": 4
-            },
-            "remove": {
-              "particles_nb": 2
-            }
-          }
-        },
-        "retina_detect": true
-      });
+  #botFace:hover p {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+
+  #botFace {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 9999;
+  }
+
+  @keyframes blink {
+
+    0%,
+    20%,
+    100% {
+      opacity: 1;
     }
-  </script>
-</body>
 
-</html>
+    10% {
+      opacity: 0;
+    }
+  }
+
+  #botFace p::before,
+  #botFace p::after {
+    content: "O";
+    animation: blink 1s infinite;
+  }
+
+  #botFace:hover p {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+</style>
+
+<button id="botFace">
+  <p>:)</p>
+</button>

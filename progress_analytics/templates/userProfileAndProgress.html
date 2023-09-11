@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .progress-bar-custom {
+            background-color: rgb(255, 120, 143);
+        }
+
+        body {
+
+            background-color: rgb(249, 208, 214);
+            ;
+
+        }
+
+        pre {
+            white-space: pre-wrap;
+
+            word-wrap: break-word;
+            margin: 10px;
+
+        }
+    </style>
+    <title>User Profile</title>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body text-center">
+                        {% if user.userprofile.image %}
+                        <img src="{{ user.userprofile.image.url }}" alt="User's Profile Picture"
+                            class="img-fluid rounded-circle mb-4" style="width: 150px; height: 150px;">
+                        {% else %}
+                        <img src="{% static 'icon.png' %}" alt="Default Profile Picture"
+                            class="img-fluid rounded-circle mb-4" style="width: 150px; height: 150px;">
+                        {% endif %}
+                        <h4 class="card-title">{{ user.username }}</h4>
+                        Course Progress, each EnergyPoints is Equal to 1%
+                        <div class="progress mb-3">
+                            <div class="progress-bar progress-bar-custom" role="progressbar"
+                                style="width: {{ energy_points }}%;" aria-valuenow="50" aria-valuemin="0"
+                                aria-valuemax="100">{{ energy_points }}
+                                % Complete</div>
+                        </div>
+                    </div>
+                    <p class="card-text">
+                    <h3 class="card-title">Progress Report Details </h3>
+                    <pre>{{ report }}</pre>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

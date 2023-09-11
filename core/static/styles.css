@@ -2,8 +2,6 @@
 
     margin: 0;
     padding: 0;
-    /* font-size: 1.1vw; */
-    /* font-family: Roboto, Arial, sans-serif; */
     font-family: 'Open Sans', sans-serif;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -73,9 +71,7 @@
     border-radius: 15px;
     border-color: #fda1b4;
     border-width: 2px;
-    /* Setting border thickness */
     border-style: solid;
-    /* Necessary to display the border */
 
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1);
 
@@ -225,14 +221,20 @@
     transform: translate(-50%, -50%);
 }
 
+
+
 #botFace {
-    position: absolute;
-    top: 5px;
-    color: whitesmoke;
-    right: 50%;
-    background-color: #42afff;
+    position: fixed;
+
+    bottom: 10px;
+
+    right: 10px;
+
+    z-index: 1000;
+    color: rgb(18, 8, 8);
+
+    background-color: #FF6A88;
     font-size: 9px;
-    /* font-weight: bold; */
     text-transform: uppercase;
     letter-spacing: 2px;
     font-family: 'Arial', sans-serif;
@@ -243,16 +245,75 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    animation: rainbow 3s infinite;
     cursor: pointer;
-    transition: background-color 0.2s ease;
-    /* For hover effect */
+    animation: rainbow 3s infinite;
+
+    transition: background-color 0.2s ease, transform 0.3s ease-out;
+    /* Initial state - button is fully shown */
+    transform: translateX(0);
+
+    /* Pink Marble Effect temeporary visula for vision-bot face will be upgraded with a more robust option*/
+    background: radial-gradient(circle at center, #FF6A88, #ff5580, #ff436d, #ff315a);
+    box-shadow:
+        inset 5px 5px 15px rgba(0, 0, 0, 0.1),
+        inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+        0px 0px 5px rgba(255, 255, 255, 0.2),
+        0px 0px 10px rgba(255, 255, 255, 0.2),
+        0px 0px 15px rgba(255, 255, 255, 0.2);
+
+    border-radius: 50%;
+
+    /* Adding marble veins using multiple background layers */
+    background-image:
+        radial-gradient(white, transparent),
+        radial-gradient(white, transparent),
+        radial-gradient(rgba(255, 106, 136, 0.5), transparent),
+        radial-gradient(rgba(255, 106, 136, 0.5), transparent);
+
+    background-size:
+        50px 50px,
+        70px 70px,
+        90px 90px,
+        110px 110px;
+
+    background-position:
+        0% 0%,
+        50% 50%,
+        100% 0,
+        0 100%;
+
 }
 
 #botFace:hover {
-    background-color: #d9e4ef;
-    /* Slightly lighter shade for hover */
+    background-color: #e7b4be;
+    ;
 }
+
+@keyframes blink {
+
+    0%,
+    100% {
+        /* Original size */
+        font-size: 1.7em;
+
+    }
+
+    50% {
+        /* Reduced size */
+        font-size: 0.1em;
+
+    }
+}
+
+.blinking-effect {
+    display: inline-block;
+    animation: blink 7s infinite;
+
+    animation-timing-function: steps(1, end);
+
+}
+
+
 
 /* pre is used becuase it load the data as it is with out rendering the formating it is the only trick I could come up with that would save me the farsi formattig scheme */
 
@@ -264,37 +325,36 @@ pre {
 }
 
 
-/* Th excerise section and modal view for next lesson window and stuff */
+/* Th excerise section and modal view for next lesson window */
 
 /* The Modal (background) */
 .modal {
     display: none;
-    /* Hidden by default */
+
     position: fixed;
-    /* Stay in place */
+
     z-index: 1;
-    /* Sit on top */
+
     left: 0;
     top: 0;
     width: 50%;
-    /* Full width */
+
     height: 50%;
-    /* Full height */
+
     overflow: auto;
-    /* Enable scroll if needed */
+
     background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
+
 }
 
 /* Modal Content */
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
-    /* 15% from the top and centered */
+
     padding: 20px;
     border: 1px solid #888;
     width: 100%;
-    /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -315,7 +375,7 @@ pre {
 
 
 
-/* Custom btns */
+/* Custom btns created to replace the bootstrap original design for more personalized look */
 
 .custom-btn {
     background-color: #FF3D70;
@@ -339,4 +399,9 @@ pre {
 .custom-btn-container {
     display: flex;
     gap: 20px;
+}
+
+#nextLesson {
+    padding: 20px 40px;
+    width: 550px;
 }
