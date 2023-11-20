@@ -31,7 +31,7 @@ ALLOWED_HOSTS = [
     'dead-134-36-250-24.ngrok-free.app'
 ]
 
-OPENAI_API_KEY = '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'
+OPENAI_API_KEY = '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'
 
 # Application definition
 
@@ -150,8 +150,8 @@ DATABASES = {
         'NAME': 'Mydb',
         'USER': 'root',
         'PASSWORD': 'King@12345',
-        'HOST': '127.0.0.1',    # Usually 'localhost' or '127.0.0.1'
-        'PORT': '3306',    # Usually '3306'
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
 
         'OPTIONS': {
             'charset': 'utf8mb4',

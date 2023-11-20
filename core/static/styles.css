@@ -9,7 +9,7 @@
 
 
 #sidebar {
-    background-color: #FF6A88;
+    background-color: #a0d4ff;
     color: ghostwhite;
     overflow-y: auto;
     height: 100vh;
@@ -233,7 +233,7 @@
     z-index: 1000;
     color: rgb(18, 8, 8);
 
-    background-color: #FF6A88;
+    background-color: #abe0ff;
     font-size: 9px;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -378,7 +378,7 @@ pre {
 /* Custom btns created to replace the bootstrap original design for more personalized look */
 
 .custom-btn {
-    background-color: #FF3D70;
+    background-color: #3db1ff;
     color: rgb(255, 255, 255);
 
     padding: 10px 25px;

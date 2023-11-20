@@ -73,7 +73,7 @@ def chat(request):
     try:
         # Use the user's conversation history in the session when generating a response
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4",
             messages=request.session['conversation_history'],
         )
     except Exception as e:

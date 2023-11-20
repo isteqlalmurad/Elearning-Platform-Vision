@@ -13,7 +13,7 @@
 
 
 .vision-info {
-    color: rgb(255, 255, 255);
+    color: rgb(37, 19, 19);
 
     padding: 20px;
     font-size: large;
@@ -55,7 +55,7 @@
 
 body {
     font-family: 'Open Sans', sans-serif;
-    background: linear-gradient(45deg, #FF9A8D, #FF6A88, hwb(344 24% 0% / 0.746));
+    background: linear-gradient(45deg, #EDB525, #dab454, #f8b712(344 24% 0% / 0.746));
     height: 100vh;
     margin: 0;
     background-size: 600% 400%;
@@ -70,12 +70,12 @@ body {
 h1 {
     font-family: 'Pacifico', cursive;
     font-size: 3.5em;
-    color: #ffffff;
+    color: #161414;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .custom-btn {
-    background-color: white;
+    background-color: rgb(106, 199, 248);
     color: #333;
 
     padding: 10px 25px;

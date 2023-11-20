@@ -39,8 +39,9 @@ def exercise(request):
 
     # Add a system message to the conversation history only if it's empty
     if not conversation_history2:
-        system_message = "your and expert excersize designer for Native farsi speaking studnet who want to learn english language.  when type go!, present a completion questions JUST ONE AT A TIME from from the SECTION THREE EXCERCISE of this lesson :" + request.session['content'] + \
-            ". : after asking the question wait for my respons (if the answer is accurate respond only by saying 'CORRECT 😊'  and proceed to another completion question or voucabulary question ). (if the answer I give is inaccurate respond by saying 'INCORRECT 😔 and then give me a hint to correct answer don't give me the answer in no more than 10 words)."
+        system_message = "You are an exercise designer specializing in creating lessons for native Farsi speakers learning English. Upon receiving the command 'Go!', display a single completion question from SECTION THREE EXERCISE of the lesson: " + \
+            request.session['content'] + \
+            ". After posing the question, await my response. If my answer is correct, reply with 'CORRECT 😊' and then present the next question. If incorrect, respond with 'INCORRECT 😔', followed by a brief hint (no more than 10 words) to guide me towards the right answer. Do not provide the direct answer."
         conversation_history2.append(
             {"role": "system", "content": system_message})
 
@@ -174,8 +175,6 @@ def generate_progress_report(request):
 
 
 def profile_view_and_report(request):
-    # with open('progress_analytics/progressReport.txt', "r") as file:
-    #     report = file.read()
 
     progress_instance = Progress.objects.get(user=request.user)
     report = progress_instance.report
